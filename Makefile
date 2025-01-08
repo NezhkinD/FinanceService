@@ -1,10 +1,13 @@
 DB_CONTAINER_NAME = fs_db
 DB_CONTAINER_PORT = 33061
 
-run: db_run build migration start_java
+run: db_run sleep build migration start_java
+
+sleep:
+	./sleep.sh
 
 start_java:
-	java -jar target/LinkShorterService.jar
+	java -jar target/AppService.jar
 
 migration:
 	bash /opt/maven/bin/mvn flyway:migrate
